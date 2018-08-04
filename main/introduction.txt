@@ -1,0 +1,31 @@
+1.
+twisted is a framework mostly for async and socket applications. You can use twisted in Django. Twisted is much complex than Django in terms of documentation, community support, implementation and familiarity.
+
+2.Twisted, on the other hand, is not a web framework. It is the server where you application runs in. It seems to be specially suited for event-driven networking.
+
+3.
+Twisted is an event-driven framework. When a request comes, it will let the process know what happens when the request is done.
+
+4.
+Tornado is a web server and a web framework by most definitions, but it's quite a minimal framework (compared to Rails or Django). Tornado modules are loosely coupled, so it's possible to use just the web server component (or even just the lower level IO loop). Compared to Django, there are a lot of areas where Tornado doesn't have as much functionality. For example, there isn't really a model abstraction in Tornado, you have to roll your own.
+
+5.
+comparison between django and tornado????? django is a web framework. Tornado
+is a web server. Whats to compare? one compares platforms for running django.
+like:
+apache + mod_python - sucks
+apache + mod_wsgi - rocks
+nginx + tornado - rocks big time with nginx handling the media and tornado
+handling django
+
+6.
+django-channels introduces a new protocol called ASGI that’s distinctly different from WSGI. django-channels comes with it’s own web server called Daphne. Daphne can handle regular http connections and WebSocket connections.
+
+If you decide to go with django-channels you have to learn it’s API and methods, You’ll also need to change your deployment process.
+
+To scale to horizontally to multiple machines you’ll still need to make use of a what django-channels call Channel layers. The recommended layer is the Redis layer. There’s also a RabbitMQ channel layer and an IPC (Inter pocess Communication) Layer. These Channel layers are the glue between django and the Daphne server. The Redis and RabbitMQ in particular are used to scale channels horizontally. The IPC channel layer is quicker but it’s only suitable for a single server because all the processes use a shared memory for communication.
+
+There’s also some downsides to using the Redis channel. Redis doesn’t have TLS Support natively and it’s support for Persistent queues isn’t that great compared to RabbitMQ.
+
+7.by nodejs
+8.by django channels
